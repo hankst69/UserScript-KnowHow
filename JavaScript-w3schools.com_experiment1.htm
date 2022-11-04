@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://www.w3schools.com/dom/loadxmldoc.js"> 
+</script>
+</head>
+<body>
+<script>
+
+xmlDoc=loadXMLDoc("books_ns.xml");
+x=xmlDoc.getElementsByTagName('title');
+
+for(i=0;i<x.length;i++)
+{
+  document.write("<p>Prefix: " + x.item(i).prefix);
+  document.write("<br>");
+  document.write("Local name: " + x.item(i).localName);
+  document.write("<br>");
+  document.write("Namespace URI: " + x.item(i).namespaceURI);  
+  document.write("<br>");
+  document.write("Base URI: " + x.item(i).baseURI);  
+  document.write("</p>");
+}
+
+Array.prototype.forEach.call(
+  document.querySelectorAll("script"), 
+  function(element) {
+    document.write("<br>");
+    document.write("<hr>");
+    //document.write("element.prefix: " + element.prefix);
+    //document.write("<br>");
+    document.write("element.localName: " + element.localName);
+    document.write("<br>");
+    document.write("element.namespaceURI: " + element.namespaceURI);
+    document.write("<br>");
+    document.write("element.baseURI: " + element.baseURI);
+    document.write("<br>");
+    document.write("element.nodeName: " + element.nodeName);
+    document.write("<br>");
+    document.write("element.nodeType: " + element.nodeType);
+    document.write("<br>");
+    document.write("element.nodeValue: " + element.nodeValue);
+    document.write("<br>");
+    document.write("element.attributes: ");
+    for (i = 0; i < element.attributes.length; i++) { 
+      document.write("<br>");
+      document.write("element.attributes.item(" + i + ").nodeName:" + element.attributes.item(i).nodeName);
+      document.write("<br>");
+      document.write("element.attributes.item(" + i + ").nodeType:" + element.attributes.item(i).nodeType);
+      document.write("<br>");
+      document.write("element.attributes.item(" + i + ").nodeValue:" + element.attributes.item(i).nodeValue);
+    }
+    if (element.textContent != null && element.textContent.length > 2) {
+      document.write("<br>");
+      document.write("<br>");
+      document.write("element.textContent.length: " + element.textContent.length);
+      document.write("<br>");
+      document.write("element.textContent: " + element.textContent.substr(1,30) +   "...");
+      document.write("<br>");
+    }
+    document.write("<hr>");
+  });
+  
+</script>
+</body>
+</html>

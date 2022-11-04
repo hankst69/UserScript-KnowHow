@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>
+<a id="myAnchor" href="http://cdn.mathjax.org/mathjax/latest/MathJax.js">MathJax</a>
+<a id="myAnchor2" href="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">jQuery</a>
+
+</p>
+
+<p>Click the button to change the value of the id attribute of the link above to "newid".</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    document.getElementById("myAnchor").id = "newid";
+    document.getElementById("demo").innerHTML = "The id of the link was changed from 'myAnchor' to 'newid'.";
+}
+</script>
+
+</body>
+</html>

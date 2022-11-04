@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="anchorParent">
+ <a id="myAnchor" href="http://www.example.com:80/test.htm#part2">Example link</a>
+</p>
+
+<p>Click the button to display the anchor part of the link above.</p>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+<p id="demo4"></p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myAnchor").hash;
+    document.getElementById("demo").innerHTML = x;
+
+    var hr = document.getElementById("myAnchor").href;
+    var ho = document.getElementById("myAnchor").host;
+    var hn = document.getElementById("myAnchor").hostname;
+    var ha = document.getElementById("myAnchor").hash;
+    x = "href: " + hr + " </br>host: " + ho + " </br>hostname: " + hn + " </br>hash: " + ha;
+    document.getElementById("demo1").innerHTML = x;
+
+    document.getElementById("myAnchor").href = ha;
+    hr = document.getElementById("myAnchor").href;
+    ho = document.getElementById("myAnchor").host;
+    hn = document.getElementById("myAnchor").hostname;
+    ha = document.getElementById("myAnchor").hash;
+    x = "href: " + hr + " </br>host: " + ho + " </br>hostname: " + hn + " </br>hash: " + ha;
+    document.getElementById("demo2").innerHTML = x;
+
+    document.getElementById("demo3").innerHTML = document.baseURI;
+
+    document.getElementById("myAnchor").href = "file:///"+ha;
+    hr = document.getElementById("myAnchor").href;
+    ho = document.getElementById("myAnchor").host;
+    hn = document.getElementById("myAnchor").hostname;
+    ha = document.getElementById("myAnchor").hash;
+    x = "href: " + hr + " </br>host: " + ho + " </br>hostname: " + hn + " </br>hash: " + ha;
+    document.getElementById("demo4").innerHTML = x;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<!-- saved from url=(0098)https://www.heise.de/developer/artikel/JavaScript-Die-Neuerungen-in-ES2018-3978938.html?view=print -->
+<html lang="de" style="transition: top 0.5s ease-out; position: relative; top: 36px;"><!--
+ Archive processed by SingleFile 
+ url: https://www.heise.de/developer/artikel/JavaScript-Die-Neuerungen-in-ES2018-3978938.html?view=print 
+ saved date: Fri Jun 29 2018 11:46:28 GMT+0200 (Central European Summer Time) 
+--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Druckversion - JavaScript: Die Neuerungen in ES2018 | heise Developer</title>
+    
+    <meta name="publisher" content="Heise Medien">
+    <meta name="robots" content="noindex, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="home" type="text/html" title="Startseite" href="https://www.heise.de/developer/">
+    <link rel="copyright" title="Copyright" href="https://www.heise.de/developer/artikel/JavaScript-Die-Neuerungen-in-ES2018-3978938.html?view=print">
+    <link href="https://www.heise.de/favicon_developer.ico" rel="shortcut icon">
+    <style>
+      @media print {
+        .printversion--hide {
+          display: none;
+        }
+      }
+      body {
+        background-color: #fff;
+        color: #151515;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        line-height: 1.5;
+      }
+      a {
+        text-decoration: none;
+        color: #151515;
+      }
+      h5 {
+        font-size: 1em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+      pre,
+      code {
+        font-family: Consolas, Menlo, "Courier New", "Liberation Mono", "DejaVu Sans Mono", "Ubuntu Mono", "andale mono", "lucida console", monospace;
+      }
+      pre {
+        clear: both;
+      }
+      .printversion {
+        max-width: 50em;
+        margin: 0 auto;
+      }
+      .readspeaker-link,
+      .comment_bubble,
+      .gallery .gallery-inner,
+      .gallery h2+b,
+      .gallery h3,
+      .gallery figcaption,
+      .video--fullwidth,
+      .akwa-inline-video,
+      .ct-print .asset_position.videos,
+      .ct-print .textkaesten,
+      .ct-print .player,
+      .ct-print .kastenBacklinkCell,
+      .ct-print .pnotiz,
+      .ct-print .phefte,
+      .ct-print .pdauer,
+      .ct-print .palter,
+      .ct-print .pkosten,
+      .ct-print .TypeSpecial,
+      .ct-print .typespecialfont,
+      .ct-print .article_hotline .question,
+      .ct-print .faq_headline,
+      .ct-print .faq_title,
+      .ct-print .faq_subtitel,
+      .ct-print .article_faq .article_autor,
+      .ct-print .article_impressum .headline,
+      .ct-print .article_leserbriefe h1,
+      .ct-print .article_leserbriefe .f,
+      .ct-print .article_leserbriefe .b,
+      .ct-print .article_leserbriefe .fb,
+      .ct-print #appInhalt .spacer,
+      .ct-print #appInhalt #highlightToc {
+        display: none;
+      }
+      .printversion__back-to-article,
+      .publish-info,
+      figcaption,
+      .ct-print .figcaption {
+        font-size: 85%;
+      }
+      .printversion__back-to-article a::before {
+        content: '\00AB';
+      }
+      .printversion__logo {
+        margin: 0 0 1em 0;
+        max-width: 200px;
+      }
+      .article__heading {
+        line-height: 1.25;
+        margin-top: .5em;
+        margin-bottom: .5em;
+      }
+      .article__heading__info {
+        color: #888;
+        vertical-align: top;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+      .publish-info__rubrik {
+        font-weight: bold;
+      }
+      .publish-info__author {
+        display: block;
+        margin-bottom: 1em;
+      }
+      .aufmacherbild,
+      .akwa-inline-img {
+        margin: 0;
+      }
+      .aufmacherbild img,
+      .akwa-article-teaser__image,
+      .img-responsive,
+      .ct-print [data-pattern="basisartikelbild"],
+      .ct-print #singleImage {
+        max-width: 100%;
+        height: auto;
+      }
+      hr {
+        clear: both;
+      }
+      .pagebreak,
+      .ct-print .article_faq .zt1,
+      .ct-print .article_faq .zt,
+      .ct-print #top-themen,
+      .ct-print .rubrikname {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      .ct-print #top-themen {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+      .printversion__copyright {
+        font-size: 80%;
+        text-align: right;
+      }
+      .akwa-caption__text {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .akwa-caption__source {
+        display: block;
+        margin-top: 0;
+      }
+      .akwa-inline--left,
+      .akwa-inline--right,
+      .a-u-inline-left,
+      .a-u-inline-right {
+        width: 45%;
+        box-sizing: border-box;
+      }
+      .rte__pos_right,
+      .akwa-inline--right,
+      .a-u-inline-right {
+        float: right;
+        margin-left: 5%;
+        margin-right: 0;
+      }
+      .rte__pos_left,
+      .akwa-inline--left,
+      .a-u-inline-left {
+        float: left;
+        margin-right: 5%;
+        margin-left: 0;
+      }
+      .rte__textbox,
+      .akwa-inline-textbox,
+      .meinung_rechts,
+      .meinung_links,
+      .meinung,
+      .rte__dossier,
+      .ct-print .verzeichnis_kasten,
+      .ct-print .kasten,
+      .printversion__ergaenzung {
+        font-size: 85%;
+        padding: 10px 20px;
+        margin-bottom: 1em;
+        border: 1px solid #ccc;
+      }
+      .rte__textbox h4,
+      .akwa-inline-textbox h4,
+      .meinung_rechts h4,
+      .meinung_links h4,
+      .meinung h4,
+      .rte__dossier h3 {
+        font-size: 1.2rem;
+        margin-top: .5em;
+        margin-bottom: 0;
+      }
+      .gallery {
+        font-size: 85%;
+        margin-bottom: 1em;
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+      }
+      .gallery::before {
+        display: block;
+        content: "Bilderstrecke";
+        color: #999;
+      }
+      .rte__table,
+      .akwa-inline-table__table {
+        font-size: 85%;
+        border-collapse: collapse;
+        margin-bottom: 1em;
+      }
+      .rte__table td,
+      .akwa-inline-table__table td {
+        border: 1px solid #ccc;
+        padding: .2em .4em;
+      }
+      .akwa-inline-img__img,
+      .ct-print [data-patterntype="bilder"],
+      .ct-print [data-pattern="basisartikelbild"] {
+        max-height: 35em;
+      }
+      @media (min-width: 600px) {
+        .tr-print .aufmacherbild {
+          float: right;
+          margin-left: 1em;
+          margin-bottom: 1em;
+        }
+      }
+      .heise-table-title {
+        font-weight: bold;
+        background-color: #ccc;
+      }
+      .heise-table-subtitle {
+        font-weight: bold;
+        background-color: #eee;
+      }
+      .tp-print .frage,
+      .tp-print .rte__abs--frage {
+        position: relative;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        text-indent: 16px;
+      }
+      .tp-print .frage::before,
+      .tp-print .rte__abs--frage::before {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid #666;
+      }
+      .tp-print .antwort,
+      .tp-print .rte__abs--antwort {
+        margin-left: 3%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
+      .ct-print .printversion__untertitel {
+        font-size: 2.5em;
+        line-height: 1;
+        margin-top: 0;
+      }
+      .ct-print .printversion__untertitel {
+        margin-bottom: 0;
+      }
+      .ct-print .possible_gallery,
+      .ct-print .box_right {
+        margin-bottom: 1em;
+      }
+      .ct-print .fussnote {
+        list-style: none;
+      }
+      .ct-print .vik,
+      .ct-print .infofrage,
+      .ct-print .box_verzeichnis .nobr,
+      .ct-print .tipp-kasten .tipp,
+      .ct-print .article_faq .question,
+      .ct-print .storyfortsetzung,
+      .ct-print .zt,
+      .ct-print .ib,
+      .ct-print .highlightInfo,
+      .ct-print .pagenumber_big {
+        font-weight: bold;
+      }
+      .ct-print .article_leserbriefe .red,
+      .ct-print .article_leserbriefe .antwort {
+        font-style: italic;
+      }
+      .ct-print #appToc ul {
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
+      .ct-print .pagenum {
+        font-weight: bold;
+        display: inline-block;
+        width: 3em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <article class="printversion developer-print">
+      <p class="printversion__back-to-article printversion--hide">
+        <a href="https://www.heise.de/developer/artikel/JavaScript-Die-Neuerungen-in-ES2018-3978938.html">zurück zum Artikel</a>
+      </p>
+      <figure class="printversion__logo">
+        <svg preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 85" width="360" height="51"><path d="M230.68,63.64V59.82h6V20.65h-6V16.9h24c8.4,0,14.86,2,19.28,6s6.68,9.75,6.68,17.33S278.4,53.59,274,57.64s-10.88,6-19.28,6Zm18.08-3.75h4.35c4.88,0,8.48-1.58,10.73-4.73s3.38-8.1,3.38-14.93-1.13-11.78-3.38-14.86-5.85-4.65-10.73-4.65h-4.35Zm73.76-11.33H299.63v.23c0,4.28.68,7.43,2,9.3s3.38,2.85,6.3,2.85a8.71,8.71,0,0,0,5.85-1.88,9.2,9.2,0,0,0,2.85-5.55h5.18a13.44,13.44,0,0,1-5.33,8.33c-2.7,1.8-6.38,2.7-11.26,2.7-5.78,0-10.2-1.5-13.28-4.58s-4.65-7.35-4.65-13.06c0-5.55,1.58-9.83,4.73-12.91s7.58-4.65,13.13-4.65,9.75,1.65,12.68,4.88S322.37,42.33,322.52,48.56Zm-12.16-3.68c0-4.35-.38-7.43-1.2-9.23A4.19,4.19,0,0,0,305,33a4.33,4.33,0,0,0-4.13,2.63c-.83,1.73-1.2,4.65-1.2,8.7V45h10.73Zm30.69,18.76L329.27,34.15H325.6V30.33h19.13v3.83h-4.05l8.4,21,8.4-21h-4.35V30.33h12.53v3.83h-3.83L350.06,63.64Zm62.2-15.08H380.37v.23c0,4.28.68,7.43,2,9.3s3.38,2.85,6.3,2.85a8.71,8.71,0,0,0,5.85-1.88,9.2,9.2,0,0,0,2.85-5.55h5.18a13.44,13.44,0,0,1-5.33,8.33c-2.7,1.8-6.38,2.7-11.26,2.7-5.78,0-10.2-1.5-13.28-4.58S368,52.61,368,46.91c0-5.55,1.58-9.83,4.73-12.91s7.58-4.65,13.13-4.65,9.75,1.65,12.68,4.88S403.11,42.33,403.26,48.56ZM391.1,44.88c0-4.35-.38-7.43-1.2-9.23A4.19,4.19,0,0,0,385.7,33a4.33,4.33,0,0,0-4.13,2.63c-.83,1.73-1.2,4.65-1.2,8.7V45H391.1Zm34.37,15h4.73v3.83H409.64V59.89h4.73V18.62h-4.73V14.87h15.83v45Zm29.11,4.65c-5.85,0-10.5-1.58-13.81-4.65s-5-7.43-5-12.91,1.65-9.83,5-12.91,8-4.65,13.81-4.65,10.5,1.58,13.81,4.65,5,7.43,5,12.91-1.65,9.75-5,12.91S460.44,64.54,454.58,64.54Zm0-3.53a5.05,5.05,0,0,0,5-3c1-2,1.43-5.7,1.43-11s-.45-9-1.43-11a5.05,5.05,0,0,0-5-3,5,5,0,0,0-5,3c-1,2-1.43,5.7-1.43,11s.45,9,1.43,11A4.88,4.88,0,0,0,454.58,61Zm28.89-26.86h-4.73V30.33h15.83v4.2a9.59,9.59,0,0,1,3.83-3.9,12.61,12.61,0,0,1,5.93-1.28c4.73,0,8.48,1.58,11.18,4.65s4.13,7.43,4.13,12.83-1.35,9.75-4.13,12.91-6.45,4.73-11.18,4.73a13,13,0,0,1-5.93-1.28,8.76,8.76,0,0,1-3.83-3.9V73.1h5.18v3.83h-21V73.1h4.73Zm11.11,11.18v3.3c0,3.9.53,6.68,1.5,8.4a5.17,5.17,0,0,0,4.8,2.63,4.89,4.89,0,0,0,4.8-2.78c.9-1.8,1.43-5.18,1.43-9.9s-.45-8.1-1.43-9.9a5,5,0,0,0-4.8-2.78,5.09,5.09,0,0,0-4.8,2.63C495,38.66,494.58,41.51,494.58,45.33Zm66.78,3.23H538.47v.23c0,4.28.68,7.43,2,9.3s3.38,2.85,6.3,2.85a8.71,8.71,0,0,0,5.85-1.88,9.2,9.2,0,0,0,2.85-5.55h5.18a13.44,13.44,0,0,1-5.33,8.33c-2.7,1.8-6.38,2.7-11.26,2.7-5.78,0-10.2-1.5-13.28-4.58s-4.65-7.35-4.65-13.06c0-5.55,1.58-9.83,4.73-12.91s7.58-4.65,13.13-4.65,9.75,1.65,12.68,4.88S561.13,42.33,561.36,48.56Zm-12.23-3.68c0-4.35-.38-7.43-1.2-9.23a4.19,4.19,0,0,0-4.2-2.63,4.33,4.33,0,0,0-4.13,2.63c-.83,1.73-1.2,4.65-1.2,8.7V45h10.73ZM600,30v9.9h-3.53a6.44,6.44,0,0,0-1.43-4,4.61,4.61,0,0,0-3.6-1.28,6.39,6.39,0,0,0-5.7,3.23c-1.43,2.1-2.1,5.1-2.1,8.85V59.82h6.08v3.83h-22V59.82h4.73V34.15h-5.1V30.33h16.21v5.93a11.9,11.9,0,0,1,4.28-5.18,12.15,12.15,0,0,1,6.6-1.65c.68,0,1.43.08,2.4.15S598.8,29.8,600,30Z" transform="translate(0 0)" fill="#661136"></path><path d="M99.72,27.6h4.39V42.76h.07a8.46,8.46,0,0,1,3.15-3.07,9.34,9.34,0,0,1,4.54-1.24c3.22,0,8.49,2,8.49,10.4V63.26H116V49.35c0-3.88-1.46-7.25-5.64-7.25a6.33,6.33,0,0,0-5.93,4.39,5.94,5.94,0,0,0-.29,2.12V63.26H99.72V27.6ZM130,51.91c.07,5.93,3.88,8.42,8.35,8.42a16.93,16.93,0,0,0,6.74-1.24l.73,3.15a18.82,18.82,0,0,1-8.05,1.54c-7.47,0-11.93-5-11.93-12.3s4.32-13.11,11.35-13.11c7.91,0,10,7,10,11.42a13.18,13.18,0,0,1-.15,2H130Zm12.89-3.22c.07-2.78-1.17-7.17-6.15-7.17-4.47,0-6.44,4.1-6.74,7.17Zm14.64-16.55a2.56,2.56,0,0,1-2.78,2.71,2.6,2.6,0,0,1-2.64-2.71,2.74,2.74,0,0,1,2.78-2.78A2.62,2.62,0,0,1,157.55,32.14Zm-4.91,31V38.95H157V63.18Zm11.13-4.47a11.26,11.26,0,0,0,5.78,1.76c3.22,0,4.69-1.61,4.69-3.59s-1.24-3.22-4.54-4.47c-4.39-1.54-6.44-4-6.44-6.88,0-3.88,3.15-7.1,8.35-7.1A11.71,11.71,0,0,1,177.54,40l-1.1,3.22a9.62,9.62,0,0,0-5-1.39c-2.64,0-4,1.54-4,3.29,0,2,1.46,2.93,4.61,4.1,4.17,1.61,6.37,3.73,6.37,7.32,0,4.25-3.29,7.32-9.08,7.32a14.37,14.37,0,0,1-6.81-1.68Zm22.92-6.81c.07,5.93,3.88,8.42,8.35,8.42a16.93,16.93,0,0,0,6.74-1.24l.73,3.15a18.82,18.82,0,0,1-8.05,1.54c-7.47,0-11.93-5-11.93-12.3s4.32-13.11,11.35-13.11c7.91,0,10,7,10,11.42a13.18,13.18,0,0,1-.15,2H186.69Zm12.89-3.22c.07-2.78-1.17-7.17-6.15-7.17-4.47,0-6.44,4.1-6.74,7.17ZM70.58,57,67.5,54.32a28,28,0,0,0,6.15-17.13c0-17.79-13.91-29.36-31.12-29.36-23.06,0-31.12,18.23-31.12,38.58,0,18,13.25,32.87,31.55,32.87A45.36,45.36,0,0,0,69,71a27.71,27.71,0,0,0,4.17-3.59L75,70.06A42.67,42.67,0,0,1,43.42,85C19.62,85.07,0,67.79,0,43.42,0,18.67,18.08,0,43,0c20.57,0,37.7,13,37.7,34.63C80.68,42.61,76.43,51.54,70.58,57ZM48.69,27.38,34.92,58.72c-1.17,2.64-2.93,5.71-6.22,5.71a4.12,4.12,0,0,1-4.32-4.17c0-1.9,1-3.66,1.68-5.34L41,20.87c1.17-2.56,2.56-4.47,5.49-4.47a4,4,0,0,1,4.17,4.17C50.66,23,49.64,25.26,48.69,27.38ZM59.6,46.49,54.1,58.86c-1.24,2.64-3,5.56-6.3,5.56a4,4,0,0,1-4.17-4.17A12.72,12.72,0,0,1,45.32,55L52,40c1.17-2.49,2.56-4.47,5.49-4.47a4,4,0,0,1,4.17,4.17A16,16,0,0,1,59.6,46.49Z" transform="translate(0 0)" fill="#888"></path></svg>
+      </figure>
+
+      
+<header class="article-header">
+
+  
+  
+
+
+
+  
+    <h1 class="article__heading" itemprop="headline">
+  
+
+      JavaScript: Die Neuerungen in ES2018
+
+      
+
+      
+
+      </h1>
+    
+
+  <!-- RSPEAK_STOP -->
+
+    <div class="publish-info">
+        <span class="publish-info__rubrik">Sprachen</span>
+        <time class="publish-info__date" datetime="2018-02-27T08:31:00+01:00" itemprop="datePublished">
+            27.02.2018 08:31 Uhr
+        </time>
+          <span class="publish-info__author" itemprop="author">
+              Philip Ackermann
+          </span>
+
+    </div>
+
+</header>
+
+        
+    
+    <!-- RSPEAK_STOP -->
+    <figure class="aufmacherbild">
+            
+            <img src="./JavaScript_ Die Neuerungen in ES2018 _ heise Developer_files/ck-21a90c810ceeaac0.jpeg" alt="JavaScript: Die Neuerungen in ES2018">
+        
+    </figure>
+    <!-- RSPEAK_START -->
+
+
+        <p>
+          <strong>Der aktuelle Sprachstandard für JavaScript steht fest. Das ist eine gute Gelegenheit für einen Überblick über die Neuerungen.</strong>
+        </p>
+
+      <p>In <b>ihrem jüngsten Meeting[1]</b> hat die TC39 die finale Version von <b>ES2018[2]</b> verabschiedet. Damit erhält der JavaScript-Standard kurz aufgelistet folgende Neuerungen:</p>
+<ul class="rte__list rte__list--unordered"><li>Asynchrone Iteration</li><li>Rest-Properties</li><li>Spread-Properties</li><li>Lookbehind Assertions für reguläre Ausdrücke</li><li>Benannte Gruppen für reguläre Ausdrücke</li><li><em>s</em>-Flag für reguläre Ausdrücke</li><li><em>Promise.prototype.finally</em></li><li>Template Literal Revision</li></ul>
+<h3 class="subheading" id="nav_asynchrone__1">Asynchrone Iteration</h3><p>Das in ES2015 eingeführte Konzept der nativen (synchronen) Iteration (<em>Symbol.iterator</em>) erhält in ES2018 das Gegenstück der nativen <b>asynchronen Iteration[3]</b> (<em>Symbol.asyncIterator</em>). Während bei synchronen Iteratoren der Aufruf von <em>next()</em> direkt das Ergebnis der jeweiligen Iteration zurückgibt, liefert der Aufruf bei asynchronen Iteratoren ein Promise-Objekt zurück. Dieses lässt sich wie gewohnt verarbeiten. Entwickler können asynchrone Generatoren definieren, indem sie vor <em>function*</em> ein <em>async</em> stellen:</p>
+<pre class="rte__tx--listing">const getRandomNumberAsync = () =&gt; <br>  new Promise((resolve, reject) =&gt; {<br>  setTimeout(() =&gt; resolve(Math.random()), 5000);<br>  });<br><br>// Asynchrone Generatorfunktion<br>async function* repeatRandomNumberAsync() {<br>  while (true) {<br>    const number = await getRandomNumberAsync();<br>    yield number;<br>  }<br>}<br><br>const asyncIterable = repeatRandomNumberAsync();<br>const asyncIterator = asyncIterable[Symbol.asyncIterator]();</pre>
+<p>Anschließend lässt sich der asynchrone Iterator wie gewohnt verwenden. Entweder über die Promise-API</p>
+<pre class="rte__tx--listing">asyncIterator.next()<br>  .then(result1 =&gt; {<br>    // { value: '0.8079568015936667', done: false }<br>    console.log(result1);<br>    return asyncIterator.next();<br>  })<br>  .then(result2 =&gt; {<br>    // { value: '0.5766898916887389', done: false }<br>    console.log(result2);<br>    return asyncIterator.next();<br>  })<br>  .then(result3 =&gt; {<br>    // { value: '0.06312379943064839', done: false }<br>    console.log(result3);<br>    return asyncIterator.next();<br>  });</pre>
+<p>oder in Kombination mit <em>async</em>/<em>await</em></p>
+<pre class="rte__tx--listing">const result1 = await asyncIterator.next();<br>console.log(result1);<br>const result2 = await asyncIterator.next();<br>console.log(result2);<br>const result3 = await asyncIterator.next();<br>console.log(result3);</pre>
+<p>oder direkt innerhalb einer <em>for-of</em>-Schleife:</p>
+<pre class="rte__tx--listing">(async () =&gt; {<br>  for await (const number of repeatRandomNumberAsync()) {<br>    console.log(number);<br>  }<br>})();</pre>
+<h3 class="subheading" id="nav_rest_und_spread__2">Rest und Spread für Objekteigenschaften</h3>
+<p>Seit ES2015 könnnen sogenannte Rest-Parameter eine beliebige Anzahl an Funktionsparametern als Array bereitstellen. ES2018 führt analog dazu sogenannte <b>Rest-Properties[4]</b> ein, die etwas Ähnliches für Objekteigenschaften ermöglichen. Die Definition der Rest-Properties erfolgt ebenfalls über drei vorangestellte Punkte:</p>
+<pre class="rte__tx--listing">const { firstName, lastName, ...properties } = person;</pre>
+<p>Das sorgt im folgenden Listing dafür, dass alle Eigenschaften des Objekts <em>person</em>, die als <em>enumerable</em> definiert und nicht über die Destructuring-Regel einer anderen Variablen zugewiesen sind (im Beispiel <em>firstName</em> und <em>lastName</em>), in das Objekt <em>properties</em> kopiert werden:</p>
+<pre class="rte__tx--listing">const person = {<br>  firstName: 'Max',<br>  lastName: 'Mustermann',<br>  age: 33,<br>  hairColor: 'brown',<br>  height: 1.8<br>};<br>const { firstName, lastName, ...properties } = person;<br>console.log(firstName);    // Max<br>console.log(lastName);    // Mustermann<br>console.log(properties);   // { age: 33, <br>                                hairColor: 'brown', <br>                                height: 1.8 }<br></pre>
+<p><b>Spread-Properties[5]</b> sind in gewisser Weise das Gegenstück zu Rest-Properties. Zur Erinnerung: Über den in ES2015 eingeführten Spread-Operator ist es möglich, in einem Array vorliegende Werte auf mehrere Elemente zu verteilen, beispielsweise auf Parameter. Spread-Properties funktionieren ähnlich für Objekte: die Anweisung</p>
+<pre class="rte__tx--listing">const person = { firstName, lastName, ...properties }; </pre>
+<p>im folgenden Beispiel bewirkt das Kopieren aller Eigenschaften des Objekts <em>properties</em> (die <em>enumerable</em> sind) in das Objekt <em>person</em>:</p>
+<pre class="rte__tx--listing">const firstName = 'Max';<br>const lastName = 'Mustermann';<br>const properties = {<br>  age: 33,<br>  hairColor: 'brown',<br>  height: 1.8<br>};<br><br>const person = {<br>  firstName,<br>  lastName,<br>  ...properties<br>};<br>// { firstName: 'Max',<br>//   lastName: 'Mustermann',<br>//   age: 33,<br>//   hairColor: 'brown',<br>//   height: 1.8 }<br>console.log(person);</pre>
+<p>Mit Spread-Properties lassen sich somit wie in folgendem Listing gezeigt Objekte klonen, ohne auf <em>Object.assign()</em> zurückgreifen zu müssen – wobei sich das <b>im Detail etwas voneinander unterscheidet[6]</b>)).</p>
+<pre class="rte__tx--listing">const person = { firstName: 'Max', lastName:  'Mustermann', <br>                 age: 33, hairColor: 'brown', height: 1.8 }; <br>const clonedPerson = { ...person }; const<br>clonedPerson2 = Object.assign( {}, person); </pre>
+<h3 class="subheading" id="nav_reguläre__3">Reguläre Ausdrücke</h3>
+<p>Bezüglich regulärer Ausdrücke wird es in ES2018 gleich mehrere Neuerungen geben. Über sogenannte Lookahead Assertions ist es bereits jetzt möglich, nach Mustern zu suchen, denen ein anderes Muster folgt oder eben genau nicht folgt. </p>
+<p>Demnach unterscheidet man zwischen "Positive Lookaheads" und "Negative Lookaheads":</p>
+<pre class="rte__tx--listing">// Positive lookahead:<br>// Suche nach Mustern, denen das Muster "Mustermann" folgt:<br>const pattern = /\w+(?= Mustermann)/u;<br>const result = pattern.exec('Max Mustermann');<br>console.log(result[0]);<br>// result[0] === 'Max'<br><br>// Negative lookahead:<br>// Suche nach Mustern, denen das Muster <br>// "Mustermann" nicht folgt:<br>const pattern = /\w+(?! Mustermann)/u;<br>const result = pattern.exec('Max Defaultname');<br>console.log(result[0]);<br>// result[0] === 'Max'</pre>
+<p>Analog dazu wird es in ES2018 sogenannte <b>Lookbehind Assertions[7]</b> geben, mit denen sich nach Mustern suchen lässt, denen ein anderes Muster vorausgeht ("Positive Lookbehind Assertions") oder genau nicht vorausgeht ("Negative Lookbehind Assertions").</p>
+<pre class="rte__tx--listing">// Positive lookbehind:<br>// Suche nach Mustern, denen das Muster "Max " vorausgeht:<br>const pattern = /(?&lt;=Max )\w+/u;<br>const result = pattern.exec('Max Mustermann');<br>console.log(result[0]);<br>// result[0] === 'Mustermann'<br><br>// Negative lookbehind:<br>// Suche nach Mustern, denen das Muster <br>// "Max " nicht vorausgeht:<br>const pattern = /(?&lt;!Max )\w+/u;<br>const result = pattern.exec('Mustermann');<br>console.log(result[0]);<br>// result[0] === 'Mustermann'</pre>
+<p>Über sogenannte <b>Named capturing groups[8]</b> wiederum lassen sich innerhalb regulärer Ausdrücke Gruppen mit (eindeutigen) Namen versehen. Bislang sieht die Definition von Gruppen wie im folgenden Codeausschnitt aus, und die gefundenen Treffer lassen sich nach Anwendung des regulären Ausdrucks nur über den Index abrufen:</p>
+<pre class="rte__tx--listing">const pattern = /(\d{4})-(\d{2})-(\d{2})/u;<br>const result = pattern.exec('2018-01-31');<br>console.log(result[0]);  // '2018-01-31'<br>console.log(result[1]);  // '2018'<br>console.log(result[2]);  // '01'<br>console.log(result[3]);  // '31'</pre>
+<p>Benannte Gruppen erleichtern den Zugriff auf die Treffer und sorgen für verständlichere reguläre Ausdrücke. Die Definition verwendet einschließende spitze Klammern – im folgenden Ausschnitt <em>&lt;year&gt;</em>, <em>&lt;month&gt;</em> und <em>&lt;day&gt;</em>:</p>
+<pre class="rte__tx--listing">const pattern = <br>  /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u;<br>const result = pattern.exec('2018-01-31');<br><br>// Zugriff entweder über Namen:<br>console.log(result.groups.year);  // '2018'<br>console.log(result.groups.month); // '01'<br>console.log(result.groups.day);   // '31'<br><br>// Oder wie bisher auch über den Index:<br>console.log(result[0]);  // '2018-01-31'<br>console.log(result[1]];  // '2018'<br>console.log(result[2]];  // '01'<br>console.log(result[3]];  // '31'</pre>
+<p>In Kombination mit Object Destructuring sind reguläre Ausdrücke ein wahrer Genuss, weil sich die benannten Gruppen darüber direkt gleichnamigen Variablen zuweisen lassen:</p>
+<pre class="rte__tx--listing">const pattern = /(?&lt;year&gt;\d{4})-(?&lt;month&gt;\d{2})-(?&lt;day&gt;\d{2})/u;<br>const { <br>  groups: {<br>    year, <br>    month,<br>    day<br>  }<br>} = pattern.exec('2018-01-31');<br>console.log(year);  // '2018'<br>console.log(month); // '01'<br>console.log(day);   // '31'</pre>
+<p>Darüber hinaus gibt es einige weitere Features bezüglich regulärer Ausdrücke. Über <b>Unicode Property Escapes[9]</b> ist es möglich, innerhalb von regulären Ausdrücken auf Eigenschaften von Unicode-Symbolen und deren Werte zuzugreifen. Das neu eingeführte <em>s</em>-Flag (<b>dotAll-Flag[10]</b>) sorgt zudem dafür, dass das Punktzeichen innerhalb von regulären Ausdrücken auch Zeilenenden als Treffer berücksichtigt:</p>
+<pre class="rte__tx--listing">// Ohne s-Flag:<br>console.log(/some.thing/.test('some\nthing'));  // false<br><br>// Mit s-Flag<br>console.log(/some.thing/s.test('some\nthing')); // true</pre>
+<h3 class="subheading" id="nav_erweiterung_für__4">Erweiterung für finally</h3>
+<p>Neu ist zudem die Methode <b>finally()[11]</b>, die für Promise-Objekte zur Verfügung stehen wird. Über das Schlüsselwort <em>finally</em> lässt sich bereits im aktuellen JavaScript-Standard bei einem <em>try</em>/<em>catch</em>-Statement ein Codeblock definieren, der in jedem Fall ausgeführt werden soll – unabhängig davon, ob ein Fehler auftritt oder nicht. Für synchrone Abläufe sieht das in JavaScript folgendermaßen aus:</p>
+<pre class="rte__tx--listing">const doSomething = () =&gt; {};<br>try {<br>  doSomething();<br>  console.log('Did something');<br>} catch(error) {<br>  console.error('An error occured');<br>} finally {<br>  // wird in jedem Fall aufgerufen<br>  console.log('Executed in any case')<br>}</pre>
+<p>Seit ES2016 lässt sich das Vorgehen dank <em>async</em>/<em>await</em> auch bei asynchronen Abläufen verwenden:</p>
+<pre class="rte__tx--listing">const doSomethingAsync = () <br>  =&gt; new Promise((resolve, reject) =&gt; {<br>  setTimeout(resolve, 5000);<br>});<br><br>(async () =&gt; {<br>  try {<br>    await doSomethingAsync();<br>    console.log('Did something');<br>  } catch(error) {<br>    console.error('An error occured');<br>  } finally {<br>    // wird in jedem Fall aufgerufen<br>    console.log('Executed in any case')<br>  }<br>})();</pre>
+<p>Die (parameterlose) <em>finally()</em>-Methode komplettiert das Ganze, indem sich darüber entsprechende Codeblöcke auch bei Verwendung der Promise-API definieren lassen:</p>
+<pre class="rte__tx--listing">const doSomethingAsync = () =&gt; new Promise((resolve, reject)<br>  =&gt; {<br>  setTimeout(resolve, 5000);<br>});<br><br>doSomethingAsync()<br>  .then((result) =&gt; console.log('Did something'))<br>  .catch((error) =&gt; console.error('An error occured'))<br>  // wird in jedem Fall aufgerufen<br>  .finally(() =&gt; console.log('Executed in any case'));</pre>
+<h3 class="subheading" id="nav_template__5">Template Literal Revision</h3>
+<p>Die in ES2015 eingeführten Template Strings und die damit einhergehenden Tag Functions ermöglichen einen deutlich flexibleren Umgang mit Zeichenketten. ES2018 lockert einige Restriktionen, die für solche Zeichenketten noch existieren. Bisher gelten nach dem Backslash einige Zeichensequenzen nämlich als ungültig, beispielsweise wenn nach einem <em>\u</em> kein gültiger Unicode oder nach einem <em>\x</em> kein gültiger Hexcode steht. Völlige Freiheit bei der Definition von Template Strings hat man also bisher nicht – beispielsweise bei der Verarbeitung von LaTeX.</p>
+<p>ES2018 hebt einige der syntaktischen Restriktionen im Rahmen der <b>"Template Literal Revision"[12]</b> auf. Die Eigenschaft <em>raw</em> innerhalb einer Tag Function enthält nun wirklich die unverarbeiteten Zeichenketten, ohne dass eine Überprüfung stattfindet. Ist in einer solche Zeichenkette allerdings ein syntaktischer Fehler enthalten, erhält die entsprechend verarbeitete Version den Wert <em>undefined</em>.</p>
+<pre class="rte__tx--listing">function latex(strings, ...values) {<br>// Verarbeitete Zeichenketten oder jeweils undefined:<br>  console.log(strings);     <br><br>// Unverarbeitete Zeichenkette:<br>  console.log(strings.raw); <br>}<br><br>const latexDocument = latex`<br>// Funktioniert:<br>  \newcommand{\fun}{\textbf{Beispiel}}     <br>// Bisher Fehler, da ungültiges Token:<br>  \newcommand{\unicode}{\textbf{Beispiel}} <br>// Bisher Fehler, da ungültiges Token:<br>  \newcommand{\xerxes}{\textbf{Beispiel}}  <br>`;</pre>
+<h3 class="subheading" id="nav_fazit_6">Fazit</h3>
+<p>ES2018 wird eine Reihe nützliche Neuerungen mit sich bringen. Wer sie vorab ausprobieren möchte, findet den Quelltext zu diesem Artikel im <b>Git-Repository des Autors[13]</b>. Eine Übersicht aller aktuellen Proposals (Stage 1 bis 3) findet sich ebenso im <b>GitHub-Repository[14]</b> von TC39 wie <b>eine Übersicht der akzeptierten Proposals[15]</b> (Stage 4). 
+
+    (<b>rme[16]</b>)<br>
+
+
+</p>
+<p><em>Philip Ackermann<br>ist Autor mehrerer Fachbücher und Fachartikel über Java und JavaScript und arbeitet als Senior Software Developer bei der Cedalo AG in den Bereichen Industrie 4.0 und Internet of Things. Seine Schwerpunkte liegen in der Konzeption und Entwicklung von Node.js- und JEE-Projekten.</em></p>
+
+
+
+      <hr>
+
+      <p>
+        <strong>URL dieses Artikels:</strong><br>
+        <small><code>http://www.heise.de/-3978938</code></small>
+      </p>
+        <p>
+          <strong>Links in diesem Artikel:</strong><br>
+            <small><code><b>[1]</b>&nbsp;https://github.com/tc39/agendas/blob/master/2018/01.md</code></small><br>
+            <small><code><b>[2]</b>&nbsp;https://tc39.github.io/ecma262/</code></small><br>
+            <small><code><b>[3]</b>&nbsp;https://github.com/tc39/proposal-async-iteration</code></small><br>
+            <small><code><b>[4]</b>&nbsp;https://github.com/tc39/proposal-object-rest-spread/blob/master/Rest.md</code></small><br>
+            <small><code><b>[5]</b>&nbsp;https://github.com/tc39/proposal-object-rest-spread/blob/master/Spread.md</code></small><br>
+            <small><code><b>[6]</b>&nbsp;http://2ality.com/2016/10/rest-spread-properties.html</code></small><br>
+            <small><code><b>[7]</b>&nbsp;https://github.com/tc39/proposal-regexp-lookbehind</code></small><br>
+            <small><code><b>[8]</b>&nbsp;https://github.com/tc39/proposal-regexp-named-groups</code></small><br>
+            <small><code><b>[9]</b>&nbsp;https://github.com/tc39/proposal-regexp-unicode-property-escapes</code></small><br>
+            <small><code><b>[10]</b>&nbsp;https://github.com/tc39/proposal-regexp-dotall-flag</code></small><br>
+            <small><code><b>[11]</b>&nbsp;https://github.com/tc39/proposal-promise-finally</code></small><br>
+            <small><code><b>[12]</b>&nbsp;https://tc39.github.io/proposal-template-literal-revision/</code></small><br>
+            <small><code><b>[13]</b>&nbsp;https://github.com/cleancoderocker/es2018</code></small><br>
+            <small><code><b>[14]</b>&nbsp;https://github.com/tc39/proposals</code></small><br>
+            <small><code><b>[15]</b>&nbsp;https://github.com/tc39/proposals/blob/master/finished-proposals.md</code></small><br>
+            <small><code><b>[16]</b>&nbsp;mailto:rme@ct.de</code></small><br>
+        </p>
+
+      <p class="printversion__copyright">
+        <i>Copyright © 2018 Heise Medien</i>
+      </p>
+    </article>
+  
+
+
+<!-- Created with InterRed V16.6, http://www.interred.de/, by InterRed GmbH -->
+<!-- BID: 2378288, iBID: 2396761, CID: 3978938, iCID: 4006004 -->
+<!-- Link: $(LB2378288:Linktext)$ $(LC3978938:Linktext)$ -->
+<!-- Generiert: 2018-03-27 13:11:52 -->
+
+</body></html>
