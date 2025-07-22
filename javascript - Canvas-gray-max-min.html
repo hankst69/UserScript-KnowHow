@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>HTML5 Canvas</h1>
+<h2>The getImageData() Method</h2>
+
+<img id="scream" src="../jsref/img_the_scream.jpg" alt="The Scream" width="220" height="277">
+<canvas id="myCanvas" width="2" height="2" style="border:0px solid grey"></canvas>
+
+<script>
+document.getElementById("scream").onload = function() {
+  const img = document.getElementById("scream");
+  const c = document.getElementById("myCanvas");
+  console.log(img.width);
+  console.log(img.height);
+  console.log(img.naturalWidth);
+  console.log(img.naturalHeight);
+  c.width = img.naturalWidth;
+  c.height = img.naturalHeight;
+  
+  const ctx = c.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+  const imgData = ctx.getImageData(0, 0, c.width, c.height);
+  
+  //for (let idx = 0; idx < imgData.data.length; idx += 4) {
+  let max=0;   let max_x=0; let max_y=0;
+  let min=255; let min_x=0; let min_y=0;
+  rgba = 4
+  for (let x = 0; x < c.width; x++) {
+    for (let y = 0; y < c.height; y++) {
+      idx = y*c.width*rgba + x*rgba;
+      r = imgData.data[idx+0]
+      g = imgData.data[idx+1]
+      b = imgData.data[idx+2]
+      alpha = imgData.data[idx+4]
+      const gray = Math.round(0.299 * r + 0.587 * g + 0.114 * b);
+	  imgData.data[idx] = gray; //255 - imgData.data[idx];
+      imgData.data[idx+1] = gray; //255 - imgData.data[idx+1];
+      imgData.data[idx+2] = gray; //255 - imgData.data[idx+2];
+      imgData.data[idx+3] = alpha;
+      if (gray > max) {
+        max = gray;
+        max_x = x;
+        max_y = y;
+      }
+      if (gray < min) {
+        min = gray;
+        min_x = x;
+        min_y = y;
+      }
+    }
+  }
+  ctx.putImageData(imgData, 0, 0);
+
+  let radius = c.width / 50;
+  radius = radius < 2 ? 2 : radius;
+  console.log(radius);
+  console.log(max_x);
+  console.log(max_y);
+  
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = "blue";
+  ctx.beginPath();
+  ctx.arc(max_x, max_y, radius, 0, 2 * Math.PI);
+  ctx.stroke()  
+  ctx.strokeStyle = "red";
+  ctx.beginPath();
+  ctx.arc(min_x, min_y, radius, 0, 2 * Math.PI);
+  ctx.stroke()  
+
+  img.style.display = "none";
+  //c.style.position = 'absolute';
+  c.style.top = img.top;
+  c.style.left = img.left;
+
+};
+</script>
+
+</body>
+</html>
